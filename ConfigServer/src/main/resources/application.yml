@@ -1,0 +1,13 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: CONFIGSERVER
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rhythm10/Microservices-Hotel-Management-Project
+          clone-on-start: true
+
