@@ -13,6 +13,9 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  application:
+    name: USER-SERVICE
+
 eureka:
   instance:
     prefer-ip-address: true
