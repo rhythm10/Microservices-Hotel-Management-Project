@@ -4,6 +4,7 @@ import com.lcwd.user.Exceptions.ResourceNotFoundException;
 import com.lcwd.user.entities.Hotel;
 import com.lcwd.user.entities.Rating;
 import com.lcwd.user.entities.User;
+import com.lcwd.user.external.services.HotelService;
 import com.lcwd.user.repositories.UserRepository;
 import com.lcwd.user.services.UserService;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private HotelService hotelService;
+
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Override
@@ -46,8 +50,12 @@ public class UserServiceImpl implements UserService {
 
             //Fetch Hotel Details for each rating
             List<Rating> ratingList = ratings.stream().map(rating -> {
-                ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
-                Hotel hotel = forEntity.getBody();
+                /*
+                * Using RestTemplate
+                *
+                * ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
+                * */
+                Hotel hotel = hotelService.getHotel(rating.getHotelId());
                 rating.setHotel(hotel);
                 return rating;
             }).collect(Collectors.toList());
@@ -68,8 +76,7 @@ public class UserServiceImpl implements UserService {
 
         //Fetch Hotel Details for each rating
         List<Rating> ratingList = ratings.stream().map(rating -> {
-            ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
-            Hotel hotel = forEntity.getBody();
+            Hotel hotel = hotelService.getHotel(rating.getHotelId());
             rating.setHotel(hotel);
             return rating;
         }).collect(Collectors.toList());
