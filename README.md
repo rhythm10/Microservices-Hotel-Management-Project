@@ -27,6 +27,7 @@ This repository contains three microservices (User Service, Hotel Service, Ratin
 - **Eureka Registry**: Service registry for service discovery. Each microservice registers with Eureka on startup.
 - **API Gateway**: Acts as a single entry point for client requests, routing them to the appropriate microservice.
 - **Rate Limiter**: Controls the rate of requests that can be processed by the services to prevent overloading and ensure fair usage.
+- **Config Server**: Centralized configuration management, fetching properties from a Git repository for different instances.
 - **Circuit Breaker**: Provides fault tolerance by automatically redirecting requests and providing fallback mechanisms when a service is down or under heavy load.
 - **Spring Security**: Secures the microservices by implementing authentication and authorization mechanisms.
 
@@ -36,6 +37,13 @@ This repository contains three microservices (User Service, Hotel Service, Ratin
 - Maven
 - Spring Boot
 - MySQL, Postgres, and MongoDB instances
+
+## Running the Project
+
+- **Eureka**: Start the Eureka service registry.
+- **Config Server**: Start the Config Server to manage and serve configuration properties from the Git repository.
+- **API Gateway**: Start the API Gateway to route client requests to the appropriate microservices.
+- **Microservices**: Start the User Service, Hotel Service, and Rating Service.
 
 ## Takeway
 
