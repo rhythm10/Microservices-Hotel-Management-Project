@@ -30,14 +30,15 @@ This repository contains three microservices (User Service, Hotel Service, Ratin
 - **Circuit Breaker**: Provides fault tolerance by automatically redirecting requests and providing fallback mechanisms when a service is down or under heavy load.
 - **Spring Security**: Secures the microservices by implementing authentication and authorization mechanisms.
 
-
-### Prerequisites
+## Prerequisites
 
 - Java 11+
 - Maven
 - Spring Boot
 - MySQL, Postgres, and MongoDB instances
 
-**This setup ensures a robust, scalable, and secure microservices architecture, capable of handling varying loads and maintaining service availability and security.**
+## Takeway
+
+This setup ensures a robust, scalable, and secure microservices architecture, capable of handling varying loads and maintaining service availability and security.
 
 
