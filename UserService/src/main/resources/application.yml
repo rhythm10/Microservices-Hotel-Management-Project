@@ -59,8 +59,8 @@ resilience4j:
     instances:
       userRateLimiter:
         limit-refresh-period: 4s
-        limit-for-period: 2
-        timeout-duration: 0s
+        limit-for-period: 10
+        timeout-duration: 2s
 
 
 eureka:

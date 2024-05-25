@@ -51,6 +51,7 @@ public class UserController {
     }
 
     @GetMapping
+    @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingHotelFallback")
     public ResponseEntity<List<User>> getAllUser() {
         List<User> allUser = userService.getAllUser();
         return ResponseEntity.ok(allUser);
